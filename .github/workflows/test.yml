@@ -1,24 +1,17 @@
-name: OIDC-Test
+name: Test Workflow
 
 on:
-  workflow_dispatch:
-
-permissions:
-  id-token: write
-  contents: read
+  push:
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Configure AWS
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Verify Identity
-        run: aws sts get-caller-identity
+      - name: Test
+        run: echo "GitHub Actions is working!"
