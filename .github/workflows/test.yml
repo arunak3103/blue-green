@@ -9,11 +9,9 @@ permissions:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: actions/checkout@v4
 
       - name: Configure AWS
@@ -23,5 +21,4 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Verify Identity
-        run: |
-          aws sts get-caller-identity
+        run: aws sts get-caller-identity
